@@ -1,0 +1,10 @@
+{
+    "cmake.sourceDirectory": "/home/orangepi/maxon_ws_can/src/maxon_driver",
+    "files.associations": {
+        "exception": "cpp",
+        "istream": "cpp",
+        "ostream": "cpp",
+        "sstream": "cpp",
+        "new": "cpp"
+    }
+}
