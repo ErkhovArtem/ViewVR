@@ -16,6 +16,7 @@ Git clone this repository. Merge the downloaded folder into your project folder,
 
 - Open scene **WebCamStreaming**.
 - Navigate to `Scripts` game object and make sure `Use Predefined Cameras` under the <u>Web Cam Stream</u> script is unticked. Hit play in Unity and all the camera names will be loaded in the `Device Names`. Copy down the names of the cameras you want to use, stop Unity, tick `Use Predefined Cameras` and enter these names in the `Device Names` now.
+- In field `path` enter absolute path to the folder where camera images will be saved, it's like a prototype of dataset collection system. It will work only if python client is connected. 
 - Hit play in Unity, and you should see a camera view on the canvas. To switch to the next camera, press the space bar.
 
 

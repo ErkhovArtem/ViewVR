@@ -28,10 +28,9 @@ public class WebCamStream : MonoBehaviour
     TcpClient client;
     bool running;
     Thread thread;
-    public Color32[] color32;
     private byte[] bytes = null;
     public int flag;
-    public string path = "C:/Users/ErkhovAA/Desktop/HRI_Paper/data/unity_data/";
+    public string path = " ";
     private int count;
     private string current_dir;
 
