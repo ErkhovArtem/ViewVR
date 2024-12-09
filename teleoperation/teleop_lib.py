@@ -38,37 +38,7 @@ def isInJointLimits(q):
         return False
     return True
 
-# def round_angle(angle, min_lim, max_lim):
-#     if angle > max_lim:
-#         return max_lim
-#     if angle < min_lim:
-#         return min_lim
-#     return angle
-
-# def round_angles(q):
-#     min_lims = [0.2, -0.8, 0.0, 506.5]
-#     max_lims = [2.5, 0.9, 2.15, 511.5]
-#     for i in range(2,5):
-#         q[i] = round_angle(q[i], min_lims[i-2], max_lims[i-2])
-#     return q
-
-# def filter(hand, old_hand, pos_tol = 0.01, angle_tol = 0.02):
-#     pos_vec = np.zeros(3)
-#     pos_vec[0] = hand['x'][0] - old_hand['x'][0]
-#     pos_vec[1] = hand['z'][0] - old_hand['z'][0]
-#     pos_vec[2] = hand['y'][0] - old_hand['y'][0]
-
-#     if norm(pos_vec) > pos_tol:
-#         return False
-    
-#     q = [hand[axis][0] for axis in ['r_x', 'r_y', 'r_z', 'r_w']]
-#     q_old = [old_hand[axis][0] for axis in ['r_x', 'r_y', 'r_z', 'r_w']]
-#     dif = [a - b for a,b in zip(q, q_old)]
-#     if norm(dif) > angle_tol:
-#         return False
-
-#     return True
-    
+   
 def quaternion_multiply(quaternion1, quaternion0, reverse = False):
     if reverse:
         x0, y0, z0, w0 = quaternion0

@@ -25,7 +25,6 @@ def run(new_trajectory = True):
         
     base_hand = pyopenvr_wrapper.sample(hand_tracker, samples_count=1)
     base_robot = rtde_r.getActualTCPPose()
-    # ToDo !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
     while(1):
         # save the observation
@@ -36,10 +35,10 @@ def run(new_trajectory = True):
         ur_pose = lib.hand_to_ur(hand, base_hand, base_robot)
         if rtde_c.isPoseWithinSafetyLimits(ur_pose):
             q = rtde_c.getInverseKinematics(ur_pose)
-            if lib.isInJointLimits(q):
-                rtde_c.servoJ(q, lib.velocity, lib.acceleration, lib.dt, lib.lookahead_time, lib.gain)
+            # if lib.isInJointLimits(q):
+            rtde_c.servoJ(q, lib.velocity, lib.acceleration, lib.dt, lib.lookahead_time, lib.gain)
 
-        pos = lib.read_pose(port)
+        pos = lib.read_pose()
         if (pos < gripper._max_position - 30) and (pos > gripper._min_position + 30):
             gripper.move(pos, 200, 10)
             sleep(0.01)
@@ -65,19 +64,22 @@ def base():
     508.9877680103683], lib.velocity, lib.acceleration, lib.dt, lib.lookahead_time, lib.gain)
 
 
-
 port_name = "COM3"
-hand_tracker = 'tracker_0'
 unity_host, unity_port = "127.0.0.1", 25001
 
-# open COM port
-for port in comports():
-    print('COM port: ', port)
+# change this variables befor usage!
+hand_tracker = 'tracker_0'
+robot_ip = "192.168.1.110"
 
-port = Serial(port_name, 230400, timeout=1)
-if not port.isOpen():
-    print('Device is not connected to COM port!')
-    sys.exit(1)
+
+# open COM port
+# for port in comports():
+#     print('COM port: ', port)
+
+# port = Serial(port_name, 230400, timeout=1)
+# if not port.isOpen():
+#     print('Device is not connected to COM port!')
+#     sys.exit(1)
 
 
 pyopenvr_wrapper = pose_openvr_wrapper.OpenvrWrapper('config.json')
@@ -87,14 +89,14 @@ if hand_tracker not in pyopenvr_wrapper.devices.keys():
         sys.exit(1)
 
 try:
-    rtde_r = rtde_receive.RTDEReceiveInterface("192.168.1.110")
-    rtde_c = rtde_control.RTDEControlInterface("192.168.1.110")
+    rtde_r = rtde_receive.RTDEReceiveInterface(robot_ip)
+    rtde_c = rtde_control.RTDEControlInterface(robot_ip)
     gripper = robotiq_gripper.RobotiqGripper()
 except:
     print('Could not connect to robot!')
     sys.exit(1) # ToDo !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-gripper.connect("192.168.1.110", 63352)
+gripper.connect(robot_ip, 63352)
 if not gripper.is_active():
     try:
         gripper.activate()
@@ -147,25 +149,6 @@ while(1):
         timeout = False
         sleep(0.1)
         
-
-
-
-# while(1):
-#     print('Program stopped. Possible options:')
-#     print('e - exit program')
-#     print('b - move to base pose')
-#     print('c - continue trajectory from current pose')
-#     print('r - run new trajectory from current pose')
-
-#     command = input('Enter your choise: ')
-#     if command == 'e':
-#         break
-#     if command == 'b':
-#         base()
-#     if command == 'r':
-#         run()
-#     if command == 'c':
-#         run(False)
 
 
 print('Exit program...')

@@ -1,1 +1,0 @@
-# UR3_VIVE_Teleoperation

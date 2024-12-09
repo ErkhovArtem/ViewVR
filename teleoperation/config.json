@@ -6,21 +6,6 @@
           "serial":"LHR-B6119ABB"
         },
         {
-          "name": "controller_1",
-          "type": "controller",
-          "serial":"LHR-1C80D239"
-        },
-        {
-          "name": "tracker_1",
-          "type": "tracker",
-          "serial":"LHR-E126F2BF"
-        },
-        {
-          "name": "tracker_2",
-          "type": "tracker",
-          "serial":"LHR-BF6A359D"
-        },
-        {
           "name": "hmd_1", 
           "type": "hmd",
           "serial": "LHR-E323E68E"

@@ -1,6 +1,6 @@
-﻿# VIVE-Motion-Capture-With-Wearable-Cameras
+﻿# Webcam streaming into HTC VIVE Headset
 
-This system consists of HTC VIVE VR headset, trackers and various cameras. It provides camera stream from various cameras into your HTC VIVE headset.
+This system consists of HTC VIVE VR headset, trackers and various cameras. It provides camera stream from various cameras into your HTC VIVE headset. This project is based on [link](https://github.com/hiro-wpi/VIVE-Motion-Capture-With-Wearable-Cameras?ysclid=m4h251pnea588029740)
 
 This repository is tested in Unity 2020+, but other Unity version should work as well.
 
